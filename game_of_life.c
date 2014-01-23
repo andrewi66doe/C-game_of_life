@@ -20,13 +20,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <unistd.h>
 
 #define ALIVE 1
 #define DEAD 0
 
 int ret_neighbors(char* grid, int dim_x, int dim_y, int x, int y);
 void calc_next_gen(char* curr_gen, char* next_gen, int dim_x, int dim_y);
-void display_grid(char* grid, int dim_x, int dim_y, int x, int y);
+void display_grid(char* grid, int dim_x, int dim_y, int x, int y, int color);
 
 
 
@@ -37,12 +38,12 @@ void display_grid(char* grid, int dim_x, int dim_y, int x, int y);
  *  position for the array state to printed to 
  * =====================================================================================
  */
-void display_grid(char* grid, int dim_x, int dim_y, int x, int y)
+void display_grid(char* grid, int dim_x, int dim_y, int x, int y, int color)
 {
 	int xx, yy;
-
-	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 	
+	init_pair(1, color, color);	
+
 	for(yy=0;yy<dim_y;yy++){				//For every element in grid if it is zero display nothing else display a character
 		for(xx=0;xx<dim_x;xx++){
 			if(grid[xx*dim_x + yy] == DEAD){
@@ -130,12 +131,16 @@ int main(int argc, char** argv)
 {
 	int i, z, width, height, random, neighbors;
 	int gen = 1;
+	int color = COLOR_BLUE;
+
+	int c;
 
 	if(argc < 3){
 		printf("USAGE: %s <width> <height>\n", argv[0]);
 		printf("Note: Unequal dimensions currently cause undefined behavior\n");
 		exit(1);
 	}
+	
 	width = atoi(argv[1]);
 	height = atoi(argv[2]);
 
@@ -168,12 +173,12 @@ int main(int argc, char** argv)
 		usleep(80000);				
 		if(gen){
 			calc_next_gen(current_generation, next_generation, width, height);
-			display_grid(next_generation, width, height, 1, 1);
+			display_grid(next_generation, width, height, 0, 0, color);
 			gen = 0;
 		}
 		else{
 			calc_next_gen(next_generation, current_generation, width, height);
-			display_grid(current_generation, width, height, 1, 1);
+			display_grid(current_generation, width, height, 0, 0, color);
 			gen = 1;	
 		}
 		refresh();

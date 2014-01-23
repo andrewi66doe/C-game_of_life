@@ -29,10 +29,14 @@ void calc_next_gen(char* curr_gen, char* next_gen, int dim_x, int dim_y);
 void display_grid(char* grid, int dim_x, int dim_y, int x, int y);
 
 
-/*-----------------------------------------------------------------------------
- *  Display grid accepts an array of chars with it's dimensions and the position
- *  for displaying the grid
- *-----------------------------------------------------------------------------*/
+
+/* 
+ * ===  FUNCTION  ======================================================================
+ *         Name:  display_grid
+ *  Description:  Accepts a char array and it's dimensions along with an x and y 
+ *  position for the array state to printed to 
+ * =====================================================================================
+ */
 void display_grid(char* grid, int dim_x, int dim_y, int x, int y)
 {
 	int xx, yy;

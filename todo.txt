@@ -1,0 +1,9 @@
+TODO:
+
+	*Fix stack corruption on non equal dimensions
+
+	*There seems to be some sort of overflow for dimensions such as 50x1000 it does not crash
+	the program but seems to have a cool effect
+
+	*Optimize so that the program does not evaluate cells that were not changed the last
+	cycle

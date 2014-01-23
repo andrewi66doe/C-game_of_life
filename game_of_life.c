@@ -133,8 +133,6 @@ int main(int argc, char** argv)
 	int gen = 1;
 	int color = COLOR_BLUE;
 
-	int c;
-
 	if(argc < 3){
 		printf("USAGE: %s <width> <height>\n", argv[0]);
 		printf("Note: Unequal dimensions currently cause undefined behavior\n");

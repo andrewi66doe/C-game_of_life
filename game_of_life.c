@@ -129,7 +129,7 @@ int main(int argc, char** argv)
 
 	if(argc < 3){
 		printf("USAGE: %s <width> <height>\n", argv[0]);
-		printf("Note: the width and height must be in incrments of 100\n");
+		printf("Note: Unequal dimensions currently cause undefined behavior\n");
 		exit(1);
 	}
 	width = atoi(argv[1]);

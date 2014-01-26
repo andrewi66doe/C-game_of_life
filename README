@@ -7,5 +7,3 @@ game_of_life.c uses the ncurses library so to compile simply run the command:
 Then run the executable with:
 	./game_of_life <WIDTH> <HEIGHT>
 
-**Note that unequal dimensions can sometimes cause undefined behavior and even 
-stack corruption

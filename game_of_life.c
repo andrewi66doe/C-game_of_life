@@ -20,7 +20,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
-#include <unistd.h>
 
 #define ALIVE 1
 #define DEAD 0
@@ -129,13 +128,13 @@ void calc_next_gen(char* curr_gen, char* next_gen, int dim_x, int dim_y)
 
 int main(int argc, char *argv[])
 {
-	int i, z, width, height, random, neighbors;
+	int i, width, height;
 	int gen = 1;
 	int color = COLOR_BLUE;
 
 	if(argc < 3){
 		printf("USAGE: %s <width> <height>\n", argv[0]);
-		exit(1);
+		exit(0);
 	}
 	
 	width = atoi(argv[1]);
@@ -162,7 +161,6 @@ int main(int argc, char *argv[])
 	noecho();
 	start_color();
 	timeout(0);
-	srand(time(NULL));
 
 	while(getch() != 'q')
 	{

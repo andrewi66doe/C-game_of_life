@@ -127,7 +127,7 @@ void calc_next_gen(char* curr_gen, char* next_gen, int dim_x, int dim_y)
 }	
 
 
-int main(int argc, char** argv)
+int main(int argc, char *argv[])
 {
 	int i, z, width, height, random, neighbors;
 	int gen = 1;
@@ -153,13 +153,12 @@ int main(int argc, char** argv)
 	memset(current_generation, 0, sizeof(current_generation)); 		//memset both malloc'd arrays to zero
 	memset(next_generation, 0, sizeof(next_generation)); 
 
-	srand(time(NULL));	
+	srand(time(NULL));							//Seed for random values	
 
-	for(i=0;i<height;i++){							//For loop initializes the current_gen array with random values between 1 and 0
-		for(z=0;z<width;z++){
-			current_generation[z*width + i] = rand() % 2;
-		}
+	for(i=0;i<width*height;i++){						//For loop initializes the current_gen array with random values between 1 and 0
+		current_generation[i] = rand() % 2;
 	}
+	
 
 	initscr();
 	raw();

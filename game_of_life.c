@@ -135,7 +135,6 @@ int main(int argc, char *argv[])
 
 	if(argc < 3){
 		printf("USAGE: %s <width> <height>\n", argv[0]);
-		printf("Note: Unequal dimensions currently cause undefined behavior\n");
 		exit(1);
 	}
 	

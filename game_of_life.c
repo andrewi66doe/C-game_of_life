@@ -46,7 +46,7 @@ void display_grid(char* grid, int dim_x, int dim_y, int x, int y, int color)
 
 	for(yy=0;yy<dim_y;yy++){				//For every element in grid if it is zero display nothing else display a character
 		for(xx=0;xx<dim_x;xx++){
-			if(grid[xx*dim_x + yy] == DEAD){
+			if(grid[yy*dim_x + xx] == DEAD){
 				mvaddch(xx+x, yy+y, ' ');
 			}
 			else{

@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
 {
 	int i, width, height;
 	int gen = 1;
-	int color = COLOR_BLUE;
+	int color = COLOR_GREEN;
 
 	if(argc < 3){
 		printf("USAGE: %s <width> <height>\n", argv[0]);
@@ -140,18 +140,24 @@ int main(int argc, char *argv[])
 	width = atoi(argv[1]);
 	height = atoi(argv[2]);
 
-	char *current_generation = malloc(width * height);			//Arrays of size width*height are allocated for current and next generations
-	assert(current_generation != NULL);
+	char *current_generation = malloc(width * height);			    //Arrays of size width*height are allocated for current and next generations
+    if(current_generation == NULL){
+        printf("Failed to allocate memory\n")
+        exit(1);
+    }
 
 	char *next_generation = malloc(width * height);
-	assert(next_generation != NULL);
+	if(current_generation == NULL){
+        printf("Failed to allocate memory\n");
+        exit(1);
+    }
  	
 	memset(current_generation, 0, sizeof(current_generation)); 		//memset both malloc'd arrays to zero
 	memset(next_generation, 0, sizeof(next_generation)); 
 
-	srand(time(NULL));							//Seed for random values	
+	srand(time(NULL));							                    //Seed for random values	
 
-	for(i=0;i<width*height;i++){						//For loop initializes the current_gen array with random values between 1 and 0
+	for(i=0;i<width*height;i++){						            //For loop initializes the current_gen array with random values between 1 and 0
 		current_generation[i] = rand() % 2;
 	}
 	
@@ -164,7 +170,7 @@ int main(int argc, char *argv[])
 
 	while(getch() != 'q')
 	{
-		usleep(80000);				
+		usleep(50000);				
 		if(gen){
 			calc_next_gen(current_generation, next_generation, width, height);
 			display_grid(next_generation, width, height, 0, 0, color);
@@ -177,7 +183,7 @@ int main(int argc, char *argv[])
 		}
 		refresh();
 	}
-	free(current_generation);						//Free the arrays that hold the generation data
+	free(current_generation);						                //Free the arrays that hold the generation data
 	free(next_generation);
 	endwin();	
 	return 0;

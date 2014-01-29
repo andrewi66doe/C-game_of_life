@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
 
 	char *current_generation = malloc(width * height);			    //Arrays of size width*height are allocated for current and next generations
     if(current_generation == NULL){
-        printf("Failed to allocate memory\n")
+        printf("Failed to allocate memory\n");
         exit(1);
     }
 

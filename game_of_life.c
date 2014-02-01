@@ -141,16 +141,16 @@ int main(int argc, char *argv[])
 	height = atoi(argv[2]);
 
 	char *current_generation = malloc(width * height);			    //Arrays of size width*height are allocated for current and next generations
-    if(current_generation == NULL){
-        printf("Failed to allocate memory\n");
-        exit(1);
-    }
+   	 if(current_generation == NULL){
+        	printf("Failed to allocate memory\n");
+        	exit(1);
+    	}
 
 	char *next_generation = malloc(width * height);
-	if(current_generation == NULL){
-        printf("Failed to allocate memory\n");
-        exit(1);
-    }
+	if(next_generation == NULL){
+        	printf("Failed to allocate memory\n");
+        	exit(1);
+    	}
  	
 	memset(current_generation, 0, sizeof(current_generation)); 		//memset both malloc'd arrays to zero
 	memset(next_generation, 0, sizeof(next_generation)); 

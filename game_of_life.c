@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  curses.c
+ *       Filename:  game_of_life.c
  *
  *    Description:  The game of life implemented in c and curses
  *

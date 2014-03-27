@@ -37,7 +37,9 @@ void display_grid(char* grid, int dim_x, int dim_y, int x, int y, int color)
 	
 	init_pair(1, color, color);	
 
-	for(yy=0;yy<dim_y;yy++){				//For every element in grid if it is zero display nothing else display a character
+
+	//For every element in grid if it is zero display nothing else display a character
+	for(yy=0;yy<dim_y;yy++){				
 		for(xx=0;xx<dim_x;xx++){
 			if(grid[yy*dim_x + xx] == DEAD){
 				mvaddch(xx+x, yy+y, ' ');
@@ -93,7 +95,8 @@ int ret_neighbors(char* grid, int dim_x, int dim_y, int x, int y)
  */
 void calc_next_gen(char* curr_gen, char* next_gen, int dim_x, int dim_y)
 {
-	assert((sizeof(curr_gen)/sizeof(curr_gen[0])) == (sizeof(next_gen)/sizeof(next_gen[0])));	//throw an error if the two arrays are not the same size
+	//throw an error if the two arrays are not the same size
+	assert((sizeof(curr_gen)/sizeof(curr_gen[0])) == (sizeof(next_gen)/sizeof(next_gen[0])));	
 	
 	int x,y;
 	int neighbors = 0;
@@ -133,25 +136,23 @@ int main(int argc, char *argv[])
 	
 	width = atoi(argv[1]);
 	height = atoi(argv[2]);
-
-	char *current_generation = malloc(width * height);			    //Arrays of size width*height are allocated for current and next generations
-   	 if(current_generation == NULL){
-        	printf("Failed to allocate memory\n");
-        	exit(1);
-    	}
-
+	//Arrays of size width*height are allocated for current and next generations
+	char *current_generation = malloc(width * height);/
 	char *next_generation = malloc(width * height);
-	if(next_generation == NULL){
-        	printf("Failed to allocate memory\n");
+	
+	if(next_generation == NULL || current_generation == NULL){
+        	printf("Failure in memory allocation exiting....\n");
         	exit(1);
     	}
- 	
-	memset(current_generation, 0, sizeof(current_generation)); 		//memset both malloc'd arrays to zero
+ 	//memset both malloc'd arrays to zero
+	memset(current_generation, 0, sizeof(current_generation)); 
 	memset(next_generation, 0, sizeof(next_generation)); 
 
-	srand(time(NULL));							                    //Seed for random values	
+	//Seed for random values
+	srand(time(NULL));					
 
-	for(i=0;i<width*height;i++){						            //For loop initializes the current_gen array with random values between 1 and 0
+	//For loop initializes the current_gen array with random values between 1 and 0
+	for(i=0;i<width*height;i++){
 		current_generation[i] = rand() % 2;
 	}
 	
@@ -177,7 +178,8 @@ int main(int argc, char *argv[])
 		}
 		refresh();
 	}
-	free(current_generation);						                //Free the arrays that hold the generation data
+	//Free the arrays that hold the generation data
+	free(current_generation);						                
 	free(next_generation);
 	endwin();	
 	return 0;

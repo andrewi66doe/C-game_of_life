@@ -129,7 +129,7 @@ int main(int argc, char *argv[])
 	int gen = 1;
 	int color = COLOR_GREEN;
 
-	if(argc < 3){
+	if(argc != 3){
 		printf("USAGE: %s <width> <height>\n", argv[0]);
 		exit(0);
 	}
